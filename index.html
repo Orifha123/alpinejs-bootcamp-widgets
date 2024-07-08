@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="greet.js"></script>
+    <script src="transport.js"></script>
+    <script src="phonebill.js"></script>
+    <script src="airtime.js"></script>
+
+</head>
+<body style="background-color: khaki;">
+    <h1>greeting</h1>
+
+    <div x-data="greet('Janine')">
+        <label for="languageSelect">Select Language:</label>
+        <select id="languageSelect" x-model="currentLanguage">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+        </select>
+        <p x-text="greeting"></p>
+    </div>
+
+    <h1>Transport Fee</h1>
+    <div x-data="transportFee()" class="container">
+        <label for="shift">Select your shift:</label>
+        <select id="shift" x-model="shift">
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="night">Night</option>
+        </select>
+        <button style="background-color: coral;" @click="calculateFee">Calculate Fee</button>
+        <div class="result" x-text="result" id="result"></div>
+    </div>
+
+    <h1>Phone Bill</h1>
+    <div x-data="phoneBill()" class="container">
+        <label for="data">Enter your data (comma separated):</label>
+        <input id="data" type="text" x-model="data" placeholder="e.g., call, sms, call">
+        <button style="background-color: greenyellow ; border-radius: 1%;" b @click="calculateBill">Calculate Bill</button>
+        <div class="result" x-text="result"></div>
+    </div>
+    <h1>Airtime Calculator</h1>
+    <div x-data="enoughAirtime()" class="container">
+        <label for="usage">Enter your usage (comma separated):</label>
+        <input id="usage" type="text" x-model="usage" placeholder="e.g., call, sms, data">
+        <label for="airtime">Enter available airtime (R):</label>
+        <input id="airtime" type="number" x-model="airtime" placeholder="e.g., 20.00">
+        <button style="background-color: brown; border-radius: 0,5cap;" @click="calculateAirtime">Calculate Remaining Airtime</button>
+        <div class="result" x-text="result"></div>
+    </div>
+
+
+
+    
+    
+</body>
+</html>
